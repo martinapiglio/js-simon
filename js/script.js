@@ -53,6 +53,19 @@ playButton.addEventListener('click', function() {
         numbersGuessed.innerText = userNumbers;
         container.append(numbersGuessed);
 
+        const answerArray = arraysEqual(numbersToGuessArray, userNumbers);
+
+        console.log(answerArray);
+
+        let correctAnswersContainer = document.createElement("div");
+
+        if (answerArray.length == 0){
+            correctAnswersContainer.innerText= "non hai indovinato nemmeno un numero";
+        } else {
+            correctAnswersContainer.innerText = "hai indovinato questi numeri: " + answerArray + " hai totalizzato " + answerArray.length + " punti";
+        }
+
+        container.append(correctAnswersContainer);
      
     }, milliseconds * 4);
 
@@ -89,17 +102,13 @@ function arraysEqual(array1, array2) {
   
     for (let i = 0; i < array1.length; ++i) {
 
-        if (array1[i] !== array2[i]) {
+        if (array1[i] == array2[i]) {
   
-            resultArray.push('no');
-  
-          } else {
-  
-            resultArray.push('yes');
+            resultArray.push(array1[i]);
   
           };
   
-      };
+    };
 
     return resultArray;
 
