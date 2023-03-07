@@ -21,7 +21,7 @@ playButton.addEventListener('click', function() {
 
         numbersToGuessContainer.style.display='none';
 
-    }, milliseconds * 10);
+    }, milliseconds * 3);
 
 
     //la funzione seguente parte 2 secondi dopo la scomparsa dei numeri random
@@ -53,7 +53,8 @@ playButton.addEventListener('click', function() {
         numbersGuessed.innerText = userNumbers;
         container.append(numbersGuessed);
 
-    }, milliseconds * 12);
+     
+    }, milliseconds * 4);
 
 });
 
@@ -79,4 +80,27 @@ function randomArray(arrayLenght, min, max) {
     
     return numbersArray;
     
+};
+
+//FUNCTION: check if two arrays are equal---------------------------
+function arraysEqual(array1, array2) {
+
+    const resultArray = [];
+  
+    for (let i = 0; i < array1.length; ++i) {
+
+        if (array1[i] !== array2[i]) {
+  
+            resultArray.push('no');
+  
+          } else {
+  
+            resultArray.push('yes');
+  
+          };
+  
+      };
+
+    return resultArray;
+
 };
