@@ -1,7 +1,7 @@
 const container = document.getElementById('container');
 const playButton = document.getElementById('play-button');
-const numbersToGuess = 5
-const milliseconds = 1000
+const numbersToGuess = 5;
+const milliseconds = 1000;
 
 playButton.addEventListener('click', function() {
 
@@ -22,6 +22,32 @@ playButton.addEventListener('click', function() {
         numbersToGuessContainer.style.display='none';
 
     }, milliseconds * 10);
+
+
+    //la funzione seguente parte 2 secondi dopo la scomparsa dei numeri random
+    setTimeout(function() {
+
+        const userNumbers = [];
+
+        while (userNumbers.length < 5) {
+            
+            let userNo = Number(prompt(`Inserisci uno dei numeri`));
+
+            if (!isNaN(userNo) && (userNo > 0) && (userNo <= 100)) {
+
+            userNumbers.push(userNo);
+
+            } else {
+                
+            alert('Devi inserire un numero compreso tra 1 e 100!');
+
+            };
+
+        };
+
+        console.log(userNumbers);
+
+    }, milliseconds * 12);
 
 });
 
