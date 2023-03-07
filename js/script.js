@@ -47,6 +47,12 @@ playButton.addEventListener('click', function() {
 
         console.log(userNumbers);
 
+        numbersToGuessContainer.style.display='block';
+
+        let numbersGuessed = document.createElement("div");
+        numbersGuessed.innerText = userNumbers;
+        container.append(numbersGuessed);
+
     }, milliseconds * 12);
 
 });
