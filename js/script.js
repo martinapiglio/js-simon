@@ -1,8 +1,20 @@
+const container = document.getElementById('container');
 const playButton = document.getElementById('play-button');
+const numbersToGuess = 5
+
+
+
 
 playButton.addEventListener('click', function() {
-    let x = randomArray(5, 1, 100);
+    let x = randomArray(numbersToGuess, 1, 100);
     console.log(x);
+
+    playButton.style.display='none';
+
+    let div = document.createElement("div");
+    div.innerText = x;
+    container.append(div);
+
 });
 
 
