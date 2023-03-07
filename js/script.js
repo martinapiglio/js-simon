@@ -61,8 +61,10 @@ playButton.addEventListener('click', function() {
 
         if (answerArray.length == 0){
             correctAnswersContainer.innerText= "non hai indovinato nemmeno un numero";
-        } else {
+        } else if ((answerArray.length > 0) && (answerArray.length < 5)) {
             correctAnswersContainer.innerText = "hai indovinato questi numeri: " + answerArray + " hai totalizzato " + answerArray.length + " punti";
+        } else {
+            correctAnswersContainer.innerText = "hai indovinato tutti i numeri";
         }
 
         container.append(correctAnswersContainer);
