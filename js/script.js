@@ -1,5 +1,6 @@
 const container = document.getElementById('container');
 const playButton = document.getElementById('play-button');
+const inputSection = document.getElementById('input');
 const numbersToGuess = 5;
 const milliseconds = 1000;
 
@@ -89,12 +90,18 @@ playButton.addEventListener('click', function() {
         let correctAnswersContainer = document.createElement("div");
 
         if (answerArray.length == 0){
+
             correctAnswersContainer.innerText= "Mi dispiace, non hai indovinato nemmeno un numero...";
+        
         } else if ((answerArray.length > 0) && (answerArray.length < 5)) {
+
             correctAnswersContainer.innerText = "Hai indovinato questo/i numero/i: ( " + answerArray + " ) e hai totalizzato " + answerArray.length + " punto/i.";
+        
         } else {
+
             correctAnswersContainer.innerText = "Grande, hai indovinato tutti i numeri!";
-        }
+        
+        };
 
         correctAnswersContainer.classList.add('result');
 
@@ -103,8 +110,6 @@ playButton.addEventListener('click', function() {
     }, milliseconds * 4);
 
 });
-
-
 
 
 //FUNCTION: create an array of random numbers---------------------------
