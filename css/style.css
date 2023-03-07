@@ -6,3 +6,58 @@
     font-family: sans-serif;
 }
  /* /common */
+
+body {
+    background-image: linear-gradient(to bottom right, #428aff, lightgreen);
+ }
+
+#outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 600px;
+    height: 50vh;
+    margin: 25vh auto;
+
+    text-align: center;
+    border-radius: 50px;
+    background-color: rgb(203, 223, 255);
+}
+
+#outer-container h1 {
+    padding-bottom: .5em;
+    color: #428aff;
+}
+
+#outer-container #container button {
+    padding: .5em .8em;
+    background-color: #428aff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+}
+
+.text {
+    color: #003a97;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: .7em;
+}
+
+.text span {
+    background-color: #428aff;
+    
+    color: white; 
+    margin: 0 5px;
+    padding: 5px 7px;
+    border-radius: 30%;
+}
+
+.result {
+    color: #002257;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 1.5em;
+}

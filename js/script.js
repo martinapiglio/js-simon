@@ -12,13 +12,28 @@ playButton.addEventListener('click', function() {
                 //CHECK
 
     playButton.style.display='none';
+    document.getElementById('click-play').style.display='none';
 
+    let textContainer1 = document.createElement("div");
     let numbersToGuessContainer = document.createElement("div");
-    numbersToGuessContainer.innerText = numbersToGuessArray;
+
+    textContainer1.innerHTML = "I numeri da ricordare sono:"
+
+    for (let i = 0; i < numbersToGuessArray.length; i++) {
+
+        numbersToGuessContainer.innerHTML += '<span>' + numbersToGuessArray[i] + '</span>';
+      
+    };
+
+    textContainer1.classList.add('text');
+    numbersToGuessContainer.classList.add('text');
+
+    container.append(textContainer1);
     container.append(numbersToGuessContainer);
 
     setTimeout(function() {
 
+        textContainer1.style.display='none';
         numbersToGuessContainer.style.display='none';
 
     }, milliseconds * 3);
@@ -31,7 +46,7 @@ playButton.addEventListener('click', function() {
 
         while (userNumbers.length < 5) {
             
-            let userNo = Number(prompt(`Inserisci uno dei numeri`));
+            let userNo = Number(prompt("Inserisci i numeri nell'ordine giusto"));
 
             if (!isNaN(userNo) && (userNo > 0) && (userNo <= 100)) {
 
@@ -47,10 +62,24 @@ playButton.addEventListener('click', function() {
 
         console.log(userNumbers);
 
+        textContainer1.style.display='block';
         numbersToGuessContainer.style.display='block';
 
+        let textContainer2 = document.createElement("div");
         let numbersGuessed = document.createElement("div");
-        numbersGuessed.innerText = userNumbers;
+
+        textContainer2.innerHTML = "I numeri che hai inserito sono:"
+
+        for (let i = 0; i < userNumbers.length; i++) {
+    
+            numbersGuessed.innerHTML += '<span>' + userNumbers[i] + '</span>';
+          
+        };
+
+        textContainer2.classList.add('text');
+        numbersGuessed.classList.add('text');
+    
+        container.append(textContainer2);
         container.append(numbersGuessed);
 
         const answerArray = arraysEqual(numbersToGuessArray, userNumbers);
@@ -60,12 +89,14 @@ playButton.addEventListener('click', function() {
         let correctAnswersContainer = document.createElement("div");
 
         if (answerArray.length == 0){
-            correctAnswersContainer.innerText= "non hai indovinato nemmeno un numero";
+            correctAnswersContainer.innerText= "Mi dispiace, non hai indovinato nemmeno un numero...";
         } else if ((answerArray.length > 0) && (answerArray.length < 5)) {
-            correctAnswersContainer.innerText = "hai indovinato questi numeri: " + answerArray + " hai totalizzato " + answerArray.length + " punti";
+            correctAnswersContainer.innerText = "Hai indovinato questo/i numero/i: ( " + answerArray + " ) e hai totalizzato " + answerArray.length + " punto/i.";
         } else {
-            correctAnswersContainer.innerText = "hai indovinato tutti i numeri";
+            correctAnswersContainer.innerText = "Grande, hai indovinato tutti i numeri!";
         }
+
+        correctAnswersContainer.classList.add('result');
 
         container.append(correctAnswersContainer);
      
