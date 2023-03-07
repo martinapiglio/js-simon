@@ -1,19 +1,27 @@
 const container = document.getElementById('container');
 const playButton = document.getElementById('play-button');
 const numbersToGuess = 5
-
-
-
+const milliseconds = 1000
 
 playButton.addEventListener('click', function() {
-    let x = randomArray(numbersToGuess, 1, 100);
-    console.log(x);
+
+    let numbersToGuessArray = randomArray(numbersToGuess, 1, 100);
+
+                //CHECK
+                console.log(numbersToGuessArray);
+                //CHECK
 
     playButton.style.display='none';
 
-    let div = document.createElement("div");
-    div.innerText = x;
-    container.append(div);
+    let numbersToGuessContainer = document.createElement("div");
+    numbersToGuessContainer.innerText = numbersToGuessArray;
+    container.append(numbersToGuessContainer);
+
+    setTimeout(function() {
+
+        numbersToGuessContainer.style.display='none';
+
+    }, milliseconds * 10);
 
 });
 
