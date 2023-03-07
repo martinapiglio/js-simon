@@ -1,6 +1,7 @@
 const container = document.getElementById('container');
 const playButton = document.getElementById('play-button');
 const inputSection = document.getElementById('input');
+const generaButton = document.getElementById('genera-button');
 const numbersToGuess = 5;
 const milliseconds = 1000;
 
@@ -45,67 +46,89 @@ playButton.addEventListener('click', function() {
 
         const userNumbers = [];
 
-        while (userNumbers.length < 5) {
-            
-            let userNo = Number(prompt("Inserisci i numeri nell'ordine giusto"));
+        inputSection.style.display='block';
 
-            if (!isNaN(userNo) && (userNo > 0) && (userNo <= 100)) {
+        generaButton.addEventListener('click', function() {
 
-            userNumbers.push(userNo);
+            let userNo1 = parseInt(document.getElementById('input1').value);
+            let userNo2 = parseInt(document.getElementById('input2').value);
+            let userNo3 = parseInt(document.getElementById('input3').value);
+            let userNo4 = parseInt(document.getElementById('input4').value);
+            let userNo5 = parseInt(document.getElementById('input5').value);
 
-            } else {
+            userNumbers.push(userNo1);
+            userNumbers.push(userNo2);
+            userNumbers.push(userNo3);
+            userNumbers.push(userNo4);
+            userNumbers.push(userNo5);  
+
+            inputSection.style.display='none';
+
+            //A SEGUIRE COMMENTATA VERSIONE CON PROMPT
+
+            // while (userNumbers.length < 5) {
                 
-            alert('Devi inserire un numero compreso tra 1 e 100!');
+            //     let userNo = Number(prompt("Inserisci i numeri nell'ordine giusto"));
 
+            //     if (!isNaN(userNo) && (userNo > 0) && (userNo <= 100)) {
+
+            //     userNumbers.push(userNo);
+
+            //     } else {
+                    
+            //     alert('Devi inserire un numero compreso tra 1 e 100!');
+
+            //     };
+
+            // };
+
+            console.log(userNumbers);
+
+            textContainer1.style.display='block';
+            numbersToGuessContainer.style.display='block';
+
+            let textContainer2 = document.createElement("div");
+            let numbersGuessed = document.createElement("div");
+
+            textContainer2.innerHTML = "I numeri che hai inserito sono:"
+
+            for (let i = 0; i < userNumbers.length; i++) {
+        
+                numbersGuessed.innerHTML += '<span>' + userNumbers[i] + '</span>';
+            
             };
 
-        };
-
-        console.log(userNumbers);
-
-        textContainer1.style.display='block';
-        numbersToGuessContainer.style.display='block';
-
-        let textContainer2 = document.createElement("div");
-        let numbersGuessed = document.createElement("div");
-
-        textContainer2.innerHTML = "I numeri che hai inserito sono:"
-
-        for (let i = 0; i < userNumbers.length; i++) {
-    
-            numbersGuessed.innerHTML += '<span>' + userNumbers[i] + '</span>';
-          
-        };
-
-        textContainer2.classList.add('text');
-        numbersGuessed.classList.add('text');
-    
-        container.append(textContainer2);
-        container.append(numbersGuessed);
-
-        const answerArray = arraysEqual(numbersToGuessArray, userNumbers);
-
-        console.log(answerArray);
-
-        let correctAnswersContainer = document.createElement("div");
-
-        if (answerArray.length == 0){
-
-            correctAnswersContainer.innerText= "Mi dispiace, non hai indovinato nemmeno un numero...";
+            textContainer2.classList.add('text');
+            numbersGuessed.classList.add('text');
         
-        } else if ((answerArray.length > 0) && (answerArray.length < 5)) {
+            container.append(textContainer2);
+            container.append(numbersGuessed);
 
-            correctAnswersContainer.innerText = "Hai indovinato questo/i numero/i: ( " + answerArray + " ) e hai totalizzato " + answerArray.length + " punto/i.";
-        
-        } else {
+            const answerArray = arraysEqual(numbersToGuessArray, userNumbers);
 
-            correctAnswersContainer.innerText = "Grande, hai indovinato tutti i numeri!";
-        
-        };
+            console.log(answerArray);
 
-        correctAnswersContainer.classList.add('result');
+            let correctAnswersContainer = document.createElement("div");
 
-        container.append(correctAnswersContainer);
+            if (answerArray.length == 0){
+
+                correctAnswersContainer.innerText= "Mi dispiace, non hai indovinato nemmeno un numero...";
+            
+            } else if ((answerArray.length > 0) && (answerArray.length < 5)) {
+
+                correctAnswersContainer.innerText = "Hai indovinato questo/i numero/i: ( " + answerArray + " ) e hai totalizzato " + answerArray.length + " punto/i.";
+            
+            } else {
+
+                correctAnswersContainer.innerText = "Grande, hai indovinato tutti i numeri!";
+            
+            };
+
+            correctAnswersContainer.classList.add('result');
+
+            container.append(correctAnswersContainer);
+
+        });
      
     }, milliseconds * 4);
 
